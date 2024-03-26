@@ -1,0 +1,19 @@
+{
+  "useTabs": false,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "maxWidth": 120,
+  "printWidth": 80,
+  "importOrder": [
+    "^(react/(.*)$)|^(react$)|^(next/(.*)$)|^(next$)",
+    "^@mui(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^@lib(.*)$",
+    "^assets/(.*)$",
+    "^api/(.*)$",
+    "^utils/(.*)$",
+    "^(ui/(.*)$)|^(ui$)|^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}

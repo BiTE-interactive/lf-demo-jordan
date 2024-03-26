@@ -1,22 +1,21 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Inter } from "next/font/google";
-import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Livefront Demo App",
-  description: "A demo app for Livefront",
-};
+import GlobalStyles from "@styles/globalStyles";
+import Providers from "@providers/Providers";
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout(props: React.PropsWithChildren) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html>
+      <body className={inter.className}>
+        <Providers>
+          <GlobalStyles />
+          {props.children}
+        </Providers>
+      </body>
     </html>
   );
 }
