@@ -5,16 +5,18 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 import GlobalStyles from "@styles/globalStyles";
-import Providers from "@providers/Providers";
+import { ThemeProvider, StyledProviders } from "@/providers";
 
 export default function RootLayout(props: React.PropsWithChildren) {
   return (
     <html>
       <body className={inter.className}>
-        <Providers>
-          <GlobalStyles />
-          {props.children}
-        </Providers>
+        <ThemeProvider>
+          <StyledProviders>
+            <GlobalStyles />
+            {props.children}
+          </StyledProviders>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { Leaderboard, MainHeaderContainer } from "@components/index";
+import { Leaderboard, MainHeaderContainer } from "@/components";
 import { Center, Main, Content } from "@components/styled";
 
 export default function Home() {

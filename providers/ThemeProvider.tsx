@@ -8,26 +8,31 @@ import React, {
   useState,
   useEffect,
 } from "react";
-import { base, light, dark, Theme } from "../styles/theme";
+import { shared, light, dark, Theme, CombinedTheme } from "../styles/theme";
 
 interface ThemeContextType {
-  theme?: Theme;
+  theme: CombinedTheme;
   toggleTheme: () => void;
+  themeType: "light" | "dark";
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const defaultThemeContext: ThemeContextType = {
+  theme: { ...shared, ...light },
+  toggleTheme: () => {},
+  themeType: "light",
+};
+
+const ThemeContext = createContext<ThemeContextType>(defaultThemeContext);
 
 interface ThemeProviderProps {
   children: ReactNode;
 }
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  // Detects the system theme preference at the time of initial render
-  const prefersDarkMode = window.matchMedia(
-    "(prefers-color-scheme: dark)"
-  ).matches;
-
-  const [theme, setTheme] = useState<Theme>(prefersDarkMode ? dark : light);
+  const [theme, setTheme] = useState<Theme>(light);
+  const [themeType, setThemeType] = useState<"light" | "dark">(
+    defaultThemeContext.themeType
+  );
 
   // Listen for changes in the system theme preference
   useEffect(() => {
@@ -36,6 +41,9 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     const handleChange = (e: MediaQueryListEvent) => {
       setTheme(e.matches ? dark : light);
     };
+
+    setTheme(mediaQuery.matches ? dark : light);
+    setThemeType(mediaQuery.matches ? "dark" : "light");
 
     mediaQuery.addEventListener("change", handleChange);
 
@@ -49,7 +57,9 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{ theme: { ...shared, ...theme }, toggleTheme, themeType }}
+    >
       {children}
     </ThemeContext.Provider>
   );
@@ -59,6 +69,7 @@ export default ThemeProvider;
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
+
   if (context === undefined) {
     throw new Error("useTheme must be used within a ThemeProvider");
   }
