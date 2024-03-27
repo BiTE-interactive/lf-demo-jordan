@@ -8,8 +8,9 @@ const ThemeToggle = () => {
 
   return (
     <IconButton
-      Icon={themeType ? Light : Dark}
+      Icon={themeType === "light" ? Dark : Light}
       onClick={toggleTheme}
+      $size="md"
       $rounded
       $variant="switch"
     />

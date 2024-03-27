@@ -7,11 +7,11 @@ interface IconButtonProps {
   onClick: () => void;
 }
 
-const IconButton: FC<IconButtonProps & ButtonProps> = ({
+const IconButton = ({
   content,
   Icon,
   ...rest
-}) => {
+}: IconButtonProps & ButtonProps) => {
   return (
     <Button {...rest}>
       {content}

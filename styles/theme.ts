@@ -24,6 +24,8 @@ export interface Theme {
 
 type SharedTheme = {
   colors: {
+    primary: string;
+    secondary: string;
     white: string;
   };
 } & DefaultTheme;
@@ -31,6 +33,8 @@ type SharedTheme = {
 export const shared: SharedTheme = {
   colors: {
     white: "#fff",
+    primary: colors.primary,
+    secondary: colors.secondary,
   },
   spacing: (index: number) => {
     return `${index * 8}px`;

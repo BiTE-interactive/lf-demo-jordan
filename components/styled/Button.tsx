@@ -1,13 +1,31 @@
 import styled from "styled-components";
 
+type ButtonSize = "sm" | "md" | "lg";
+
 export interface ButtonProps {
   // all transient properties must be prefixed with $ to avoid being forwarded to the DOM
   $rounded?: boolean;
+  $size?: ButtonSize;
   $variant?: "primary" | "secondary" | "switch";
 }
 
+const buttonSize = (size?: ButtonSize) => {
+  switch (size) {
+    case "sm":
+      return "25px";
+    case "md":
+      return "30px";
+    case "lg":
+      return "40px";
+    default:
+      return "auto";
+  }
+};
+
 export const Button = styled.button<ButtonProps>`
-  padding: 10px 20px;
+  padding: ${({ $rounded }) => ($rounded ? "0" : "10px 20px")};
+  height: ${({ $size }) => buttonSize($size)};
+  width: ${({ $size }) => buttonSize($size)};
   background-color: ${({ theme, $variant }) =>
     theme.button[$variant || "primary"].background};
   color: ${({ theme, $variant }) => theme.button[$variant || "primary"].color};
@@ -22,9 +40,7 @@ export const Button = styled.button<ButtonProps>`
   &:hover {
     background-color: ${({ theme, $variant }) =>
       theme.button[$variant || "primary"].backgroundHover};
-    border: ${({ theme, $variant }) => {
-      console.log(theme.button.switch);
-      return theme.button[$variant || "primary"].borderHover || "none";
-    }};
+    border: ${({ theme, $variant }) =>
+      theme.button[$variant || "primary"].borderHover || "none"};
   }
 `;

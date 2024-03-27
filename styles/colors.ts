@@ -1,8 +1,11 @@
+const primary = "#0073e6";
+const secondary = "#f2f2f2";
+
 export const colors = {
   light: {
-    primary: "#0073e6",
+    primary,
     primaryHover: "#0061c2",
-    secondary: "#f2f2f2",
+    secondary,
     secondaryHover: "#e6e6e6",
     switchBorder: "#dae2ed",
     switchBorderHover: "#c5d0E0",
@@ -11,12 +14,12 @@ export const colors = {
     text: "#333",
   },
   dark: {
-    primary: "#0073e6",
+    primary,
     primaryHover: "#3399FF",
     secondary: "rgba(31, 38, 46, 0.4)",
     secondaryHover: "#1f262e",
     switchBorderHover: "#2f3846",
-    switchBackground: "#f2f2f2",
+    switchBackground: secondary,
     switchBackgroundHover: "rgba(31, 38, 46, 0.4)",
     switchBoxShadow: "#101418",
     switchBoxShadow2: "#0B0208",
@@ -25,5 +28,7 @@ export const colors = {
     text: "#fff",
   },
   black: "#000",
+  primary,
+  secondary,
   white: "#fff",
 };
