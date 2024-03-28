@@ -1,5 +1,16 @@
-import { Main } from "next/document";
+"use client";
 
-export default async function Page() {
-  return <Main />;
+import { Main } from "@components/styled";
+import { PlayerProfile } from "@features/PlayerProfile";
+
+export default async function Page({
+  params: { id },
+}: {
+  params: { id: string };
+}) {
+  return (
+    <Main>
+      <PlayerProfile id={id} />
+    </Main>
+  );
 }

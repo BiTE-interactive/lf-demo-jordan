@@ -19,13 +19,13 @@ export const Select = styled.div`
   }
 
   .custom-select::before {
-    border-bottom: var(--size) solid ${({ theme }) => theme.text};
+    border-bottom: var(--size) solid ${({ theme }) => theme.colors.text};
     z-index: 1;
     margin-top: -0.3rem; /* Adjust these values */
   }
 
   .custom-select::after {
-    border-top: var(--size) solid ${({ theme }) => theme.text};
+    border-top: var(--size) solid ${({ theme }) => theme.colors.text};
     margin-top: 0.3rem; /* And these, to position arrows correctly */
   }
 
@@ -41,7 +41,7 @@ export const Select = styled.div`
     background-color: ${({ theme }) => theme.backgroundStart};
     border: 1px solid #caced1;
     border-radius: 0.25rem;
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.colors.text};
     cursor: pointer;
   }
 `;

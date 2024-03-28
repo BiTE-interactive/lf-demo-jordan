@@ -1,4 +1,4 @@
-import { LadderData, Region, getGmLadderServer } from "@/data/ladder";
+import { LadderData, Region, getGmLadderServer } from "@data/ladder";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(

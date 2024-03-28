@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface FlexProps {
-  flex?: string;
+  flex?: number;
   direction?: string;
   gap?: string;
   justify?: string;
@@ -13,6 +13,7 @@ interface FlexProps {
 
 export const Flex = styled.div<FlexProps>`
   display: flex;
+  flex: ${({ flex }) => flex};
   height: ${({ height }) => height || "100%"};
   padding: ${({ p }) => (p ? `${p * 0.25}rem` : "0")};
   position: ${({ position }) => position};

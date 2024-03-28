@@ -18,11 +18,20 @@ export const TableBodyContainer = styled.div`
 
 export const TableHeader = styled.th`
   background-color: ${({ theme }) => theme.primary};
-  color: ${({ theme }) => theme.text};
-  padding: 7px 5px;
+  color: ${({ theme }) => theme.colors.text};
+  padding: 7px 4px;
   text-align: left;
   min-width: 50px;
   max-width: 100px;
+  // name column
+  &:first-child {
+    min-width: 100px;
+    width: 100px;
+    ${({ theme }) => theme.mediaQueries.md} {
+      min-width: 200px;
+      width: 200px;
+    }
+  }
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 10px;
     min-width: 100px;
@@ -37,11 +46,20 @@ export const TableRow = styled.tr`
 `;
 
 export const TableCell = styled.td`
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
   border-bottom: 1px solid ${({ theme }) => theme.primary};
   min-width: 50px;
   max-width: 100px;
-  padding: 7px 5px;
+  padding: 7px 4px;
+  // name column
+  &:first-child {
+    min-width: 100px;
+    width: 100px;
+    ${({ theme }) => theme.mediaQueries.md} {
+      min-width: 200px;
+      width: 200px;
+    }
+  }
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 10px;
     min-width: 100px;

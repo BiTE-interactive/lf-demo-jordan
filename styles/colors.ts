@@ -12,6 +12,7 @@ export const colors = {
     backgroundStart: "#d6dbdc",
     backgroundEnd: "#fff",
     text: "#333",
+    textAlt: "#666",
   },
   dark: {
     primary,
@@ -26,6 +27,7 @@ export const colors = {
     backgroundStart: "#000",
     backgroundEnd: "#181818",
     text: "#fff",
+    textAlt: "#333",
   },
   black: "#000",
   primary,

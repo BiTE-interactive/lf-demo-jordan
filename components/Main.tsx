@@ -9,9 +9,7 @@ export const Main = () => {
     <MainStyled>
       <Center>
         <Content>
-          <Center>
-            <MainHeaderContainer />
-          </Center>
+          <MainHeaderContainer />
           <Leaderboard />
         </Content>
       </Center>

@@ -1,4 +1,4 @@
-import { LadderTeam } from "@/data/ladder";
+import { LadderTeam } from "@data/ladder";
 import {
   Table,
   TableHeader,
@@ -6,17 +6,18 @@ import {
   TableCell,
   TableHeaderContainer,
   TableBodyContainer,
-} from "../../components/styled";
-import { useRouter } from "next/router";
+} from "@components/styled";
+import { useRouter } from "next/navigation";
 import { routes } from "@/routes";
+import { DataFetchingProps } from "@/data/types";
 
 interface LeaderboardTableProps {
-  teams: LadderTeam[];
+  teams?: LadderTeam[];
 }
 
-export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({
-  teams,
-}) => {
+export const LeaderboardTable: React.FC<
+  LeaderboardTableProps & DataFetchingProps
+> = ({ error, loading, teams }) => {
   const { push } = useRouter();
   return (
     <>
@@ -36,7 +37,9 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({
       <TableBodyContainer>
         <Table>
           <tbody>
-            {teams.map((team, index) => {
+            {loading && <TableRow>Loading...</TableRow>}
+            {error && <TableRow>Data Error!</TableRow>}
+            {teams?.map((team, index) => {
               const teamMember = team.teamMembers[0];
               return (
                 <TableRow

@@ -1,6 +1,5 @@
-import { Region, getGmLadderServer } from "@/data/ladder";
-import { getPlayerServer } from "@/data/player/get-player.server";
-import { PlayerData } from "@/data/player/types";
+import { getPlayerServer } from "@data/player/get-player.server";
+import { PlayerData } from "@data/player/types";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(

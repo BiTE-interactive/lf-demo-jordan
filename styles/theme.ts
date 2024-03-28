@@ -19,13 +19,16 @@ export interface Theme {
     secondary: ButtonProps;
     switch: ButtonProps;
   };
-  text: string;
+  colors: {
+    primary: string;
+    primaryHover: string;
+    secondary: string;
+    text: string;
+  };
 }
 
 type SharedTheme = {
   colors: {
-    primary: string;
-    secondary: string;
     white: string;
   };
 } & DefaultTheme;
@@ -33,8 +36,6 @@ type SharedTheme = {
 export const shared: SharedTheme = {
   colors: {
     white: "#fff",
-    primary: colors.primary,
-    secondary: colors.secondary,
   },
   mediaQueries: {
     sm: "@media (min-width: 576px)",
@@ -68,7 +69,12 @@ export const light: Theme = {
       borderHover: `1px solid ${colors.light.switchBorderHover}`,
     },
   },
-  text: colors.light.text,
+  colors: {
+    primary: colors.light.primary,
+    primaryHover: colors.light.primaryHover,
+    secondary: colors.light.secondary,
+    text: colors.light.text,
+  },
 };
 
 export const dark: Theme = {
@@ -94,7 +100,12 @@ export const dark: Theme = {
       color: colors.white,
     },
   },
-  text: colors.dark.text,
+  colors: {
+    primary: colors.dark.primary,
+    primaryHover: colors.dark.primaryHover,
+    secondary: colors.dark.secondary,
+    text: colors.dark.text,
+  },
 };
 
 export type CombinedTheme = Theme & SharedTheme;
