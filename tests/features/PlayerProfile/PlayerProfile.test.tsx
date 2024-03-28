@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import PlayerProfile from "@features/PlayerProfile/PlayerProfile";
 import { playerProfileMock } from "@mocks/index";
-import MockThemeWrapper from "../components/MockThemeWrapper";
+import MockThemeWrapper from "../../components/MockThemeWrapper";
 
 describe("PlayerProfile", () => {
   it("renders correctly with provided data", () => {
@@ -12,17 +12,14 @@ describe("PlayerProfile", () => {
       </MockThemeWrapper>
     );
 
-    // Verify the player's display name is rendered
     expect(
       screen.getByText(playerProfileMock.summary.displayName)
     ).toBeInTheDocument();
 
-    // Verify the player's portrait is correctly displayed
     expect(
       screen.getByRole("img", { name: /player portrait/i })
     ).toHaveAttribute("src", playerProfileMock.summary.portrait);
 
-    // Check for total achievement points display
     expect(
       screen.getByText(new RegExp(`Total Achievement Points:`, "i"))
     ).toBeInTheDocument();
@@ -33,7 +30,6 @@ describe("PlayerProfile", () => {
       )
     ).toBeInTheDocument();
 
-    // Verify the display of total career games
     expect(
       screen.getByText(new RegExp(`Total Career Games:`, "i"))
     ).toBeInTheDocument();
@@ -44,7 +40,6 @@ describe("PlayerProfile", () => {
       )
     ).toBeInTheDocument();
 
-    // Verify current 1v1 league name is displayed
     expect(
       screen.getByText(new RegExp(`Current 1v1 League:`, "i"))
     ).toBeInTheDocument();
@@ -55,12 +50,10 @@ describe("PlayerProfile", () => {
       )
     ).toBeInTheDocument();
 
-    // Verify swarm level is displayed
     expect(
       screen.getByText(new RegExp(`Swarm Level:`, "i"))
     ).toBeInTheDocument();
 
-    // Verify swarm level is displayed
     expect(
       screen.getByText(
         new RegExp(`${playerProfileMock.swarmLevels.level}`, "i")

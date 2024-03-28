@@ -1,5 +1,6 @@
 {
   "name": "lf-demo",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -19,6 +20,7 @@
     "swr": "^2.2.5"
   },
   "devDependencies": {
+    "@jest/globals": "^29.7.0",
     "@swc/jest": "^0.2.36",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.2",

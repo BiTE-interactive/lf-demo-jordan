@@ -7,7 +7,7 @@ interface TokenResponse {
 
 export const BATTLE_NET_BASE_URL = "https://us.api.blizzard.com";
 
-async function getOAuthToken(): Promise<string> {
+export async function getOAuthToken(): Promise<string> {
   const credentials = Buffer.from(
     `${process.env.BATTLE_NET_CLIENT_ID}:${process.env.BATTLE_NET_CLIENT_SECRET}`
   ).toString("base64");
@@ -29,7 +29,7 @@ async function getOAuthToken(): Promise<string> {
   return data.access_token;
 }
 
-async function fetchDataWithOAuth<T>(endpoint: string): Promise<T> {
+export async function fetchDataWithOAuth<T>(endpoint: string): Promise<T> {
   try {
     const token = await getOAuthToken();
 
