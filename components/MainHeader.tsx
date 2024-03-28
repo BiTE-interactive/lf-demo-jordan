@@ -8,11 +8,11 @@ import { H2 } from "./styled/Headers/H2";
 
 export const MainHeaderContainer = () => {
   return (
-    <Center height={"120px"}>
+    <Center $height={"120px"}>
       <MainHeader>
         <ThemeToggle />
         <Col>
-          <Flex gap="2rem">
+          <Flex $gap="2rem">
             <Logo />
           </Flex>
           <Center>

@@ -8,6 +8,7 @@ import React, {
   useState,
   useEffect,
 } from "react";
+import _ from "lodash";
 import { shared, light, dark, Theme, CombinedTheme } from "../styles/theme";
 
 interface ThemeContextType {
@@ -17,7 +18,7 @@ interface ThemeContextType {
 }
 
 const defaultThemeContext: ThemeContextType = {
-  theme: { ...shared, ...light },
+  theme: _.merge({}, shared, light),
   toggleTheme: () => {},
   themeType: "light",
 };
@@ -61,7 +62,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
   return (
     <ThemeContext.Provider
-      value={{ theme: { ...shared, ...theme }, toggleTheme, themeType }}
+      value={{ theme: _.merge({}, shared, theme), toggleTheme, themeType }}
     >
       {children}
     </ThemeContext.Provider>

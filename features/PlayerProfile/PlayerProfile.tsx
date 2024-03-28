@@ -1,47 +1,30 @@
 "use client";
 
-import { H2 } from "@components/styled/Headers/H2";
-import { BackButton } from "@components/styled/BackButton";
-import { useGetPlayerClient } from "@data/player/get-player.client";
-import {
-  ProfileContainer,
-  Portrait,
-  DisplayName,
-  Info,
-  InfoRow,
-  Label,
-  Value,
-  DecalImage,
-} from "./styled";
+import { Container } from "@/components";
+import { BackButton, H1 } from "@components/styled";
 import { useRouter } from "next/navigation";
 import { routes } from "@/routes";
+import { PlayerData } from "@data/player/types";
+import ThemeToggle from "@components/ThemeToggle";
+import { Portrait, Value, DecalImage, Info, InfoRow, Label } from "./styled";
 
-export const PlayerProfile = ({ id }: { id: string }) => {
-  const { data, error, isLoading } = useGetPlayerClient(id);
-
-  if (error) {
-    return <H2>Error loading player profile</H2>;
-  }
-
-  if (isLoading || !data) {
-    return <H2>Loading...</H2>;
-  }
-
+export const PlayerProfile = ({ playerData }: { playerData: PlayerData }) => {
   const { push } = useRouter();
 
-  const { snapshot, summary, career, swarmLevels } = data;
+  const { campaign, snapshot, summary, career, swarmLevels } = playerData;
 
   return (
-    <ProfileContainer>
+    <Container>
       <BackButton
         style={{ position: "absolute", left: 10 }}
         onClick={() => push(routes.HOME)}
       />
+      <ThemeToggle />
       <Portrait
         src={summary.portrait}
         alt={`${summary.displayName} Portrait`}
       />
-      <DisplayName>{summary.displayName}</DisplayName>
+      <H1>{summary.displayName}</H1>
       <Value>
         <DecalImage src={summary.decalTerran} alt="Terran Decal" />
         <DecalImage src={summary.decalProtoss} alt="Protoss Decal" />
@@ -80,8 +63,22 @@ export const PlayerProfile = ({ id }: { id: string }) => {
             </a>
           </Value>
         </InfoRow>
+        <InfoRow>
+          <Label>Campaings Completed</Label>
+          <Value>
+            Wings of Liberty {campaign.difficultyCompleted["wings-of-liberty"]}
+          </Value>
+          <Value>
+            Heart of the Swarm{" "}
+            {campaign.difficultyCompleted["heart-of-the-swarm"]}
+          </Value>
+          <Value>
+            Legacy of the Void{" "}
+            {campaign.difficultyCompleted["legacy-of-the-void"]}
+          </Value>
+        </InfoRow>
       </Info>
-    </ProfileContainer>
+    </Container>
   );
 };
 

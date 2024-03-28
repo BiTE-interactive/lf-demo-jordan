@@ -12,18 +12,20 @@ interface ButtonProps {
 }
 
 export interface Theme {
-  backgroundStart: string;
-  backgroundEnd: string;
   button: {
     primary: ButtonProps;
     secondary: ButtonProps;
     switch: ButtonProps;
   };
   colors: {
+    backgroundEnd: string;
+    backgroundStart: string;
+    tableHover: string;
     primary: string;
     primaryHover: string;
     secondary: string;
     text: string;
+    textAlt: string;
   };
 }
 
@@ -49,8 +51,6 @@ export const shared: SharedTheme = {
 };
 
 export const light: Theme = {
-  backgroundStart: colors.light.backgroundStart,
-  backgroundEnd: colors.light.backgroundEnd,
   button: {
     primary: {
       background: colors.light.primary,
@@ -70,16 +70,18 @@ export const light: Theme = {
     },
   },
   colors: {
+    backgroundEnd: colors.light.backgroundEnd,
+    backgroundStart: colors.light.backgroundStart,
     primary: colors.light.primary,
     primaryHover: colors.light.primaryHover,
+    tableHover: colors.light.tableHover,
     secondary: colors.light.secondary,
     text: colors.light.text,
+    textAlt: colors.light.textAlt,
   },
 };
 
 export const dark: Theme = {
-  backgroundStart: colors.dark.backgroundStart,
-  backgroundEnd: colors.dark.backgroundEnd,
   button: {
     primary: {
       background: colors.dark.primary,
@@ -101,10 +103,14 @@ export const dark: Theme = {
     },
   },
   colors: {
+    backgroundEnd: colors.dark.backgroundEnd,
+    backgroundStart: colors.dark.backgroundStart,
     primary: colors.dark.primary,
     primaryHover: colors.dark.primaryHover,
     secondary: colors.dark.secondary,
+    tableHover: colors.dark.tableHover,
     text: colors.dark.text,
+    textAlt: colors.dark.textAlt,
   },
 };
 

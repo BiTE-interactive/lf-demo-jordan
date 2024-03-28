@@ -1,4 +1,4 @@
-import fetchDataWithOAuth, { BATTLE_NET_BASE_URL } from "@/hooks/useFetch";
+import fetchDataWithOAuth, { BATTLE_NET_BASE_URL } from "@/data/useFetch";
 import { PlayerData } from "./types";
 import { Region } from "../ladder";
 

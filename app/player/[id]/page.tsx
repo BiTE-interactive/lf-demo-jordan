@@ -1,7 +1,7 @@
 "use client";
 
-import { Main } from "@components/styled";
-import { PlayerProfile } from "@features/PlayerProfile";
+import PlayerProfileContainer from "@/features/PlayerProfile/PlayerProfileContainer";
+import { Center, Content, Main } from "@components/styled";
 
 export default async function Page({
   params: { id },
@@ -10,7 +10,11 @@ export default async function Page({
 }) {
   return (
     <Main>
-      <PlayerProfile id={id} />
+      <Center>
+        <Content>
+          <PlayerProfileContainer id={id} />
+        </Content>
+      </Center>
     </Main>
   );
 }

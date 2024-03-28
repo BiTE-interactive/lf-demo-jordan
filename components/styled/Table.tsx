@@ -25,8 +25,8 @@ export const TableHeader = styled.th`
   max-width: 100px;
   // name column
   &:first-child {
-    min-width: 100px;
-    width: 100px;
+    min-width: 120px;
+    width: 120px;
     ${({ theme }) => theme.mediaQueries.md} {
       min-width: 200px;
       width: 200px;
@@ -34,14 +34,14 @@ export const TableHeader = styled.th`
   }
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 10px;
-    min-width: 100px;
     max-width: 200px;
   }
 `;
 
 export const TableRow = styled.tr`
   &:hover {
-    background-color: ${({ theme }) => theme.primaryHover};
+    background-color: ${({ theme }) => theme.colors.tableHover};
+    cursor: pointer;
   }
 `;
 
@@ -49,12 +49,12 @@ export const TableCell = styled.td`
   color: ${({ theme }) => theme.colors.text};
   border-bottom: 1px solid ${({ theme }) => theme.primary};
   min-width: 50px;
-  max-width: 100px;
+  max-width: 120px;
   padding: 7px 4px;
   // name column
   &:first-child {
-    min-width: 100px;
-    width: 100px;
+    min-width: 120px;
+    width: 120px;
     ${({ theme }) => theme.mediaQueries.md} {
       min-width: 200px;
       width: 200px;
@@ -62,7 +62,6 @@ export const TableCell = styled.td`
   }
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 10px;
-    min-width: 100px;
     max-width: 200px;
   }
   overflow: hidden;

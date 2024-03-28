@@ -8,9 +8,9 @@ export const Main = styled(Col)`
     `linear-gradient(
       to bottom,
       transparent,
-      ${theme.backgroundStart}
+      ${theme.colors.backgroundStart}
     )
-    ${theme.backgroundEnd}
+    ${theme.colors.backgroundEnd}
   `};
   justify-content: space-between;
   min-height: 100vh;

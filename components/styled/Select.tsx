@@ -21,24 +21,22 @@ export const Select = styled.div`
   .custom-select::before {
     border-bottom: var(--size) solid ${({ theme }) => theme.colors.text};
     z-index: 1;
-    margin-top: -0.3rem; /* Adjust these values */
+    margin-top: -0.3rem;
   }
 
   .custom-select::after {
     border-top: var(--size) solid ${({ theme }) => theme.colors.text};
-    margin-top: 0.3rem; /* And these, to position arrows correctly */
+    margin-top: 0.3rem;
   }
 
   select {
     appearance: none;
-    /*  safari  */
     -webkit-appearance: none;
-    /* width: 100%; */
     position: relative;
     width: 100%;
     font-size: 1.15rem;
     padding: 0.5rem 2rem 0.5rem 1rem;
-    background-color: ${({ theme }) => theme.backgroundStart};
+    background-color: ${({ theme }) => theme.colors.backgroundEnd};
     border: 1px solid #caced1;
     border-radius: 0.25rem;
     color: ${({ theme }) => theme.colors.text};

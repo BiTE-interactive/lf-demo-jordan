@@ -18,7 +18,7 @@ export const Select = ({
     <Flex>
       <StyledSelect>
         <div className="custom-select">
-          <select value={value} onChange={onChange}>
+          <select role="regionSelect" value={value} onChange={onChange}>
             {options.map((option) => {
               if (typeof option === "string") {
                 return (

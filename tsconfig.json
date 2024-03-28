@@ -24,10 +24,12 @@
       "@data/*": ["./data/*"],
       "@features/*": ["./features/*"],
       "@hooks/*": ["./hooks/*"],
+      "@mocks/*": ["./__mocks__/*"],
       "@lib/*": ["./lib/*"],
       "@providers/*": ["./providers/*"],
       "@styled/*": ["./components/styled/*"],
-      "@styles/*": ["./styles/*"]
+      "@styles/*": ["./styles/*"],
+      "@tests/*": ["./tests/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

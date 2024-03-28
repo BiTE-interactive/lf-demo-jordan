@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
     --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
       "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+    --max-width: 1000px;
   }
 
   * {

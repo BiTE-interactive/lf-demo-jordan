@@ -1,3 +1,5 @@
+"use client";
+
 import { LadderTeam } from "@data/ladder";
 import {
   Table,
@@ -6,10 +8,12 @@ import {
   TableCell,
   TableHeaderContainer,
   TableBodyContainer,
+  Center,
 } from "@components/styled";
 import { useRouter } from "next/navigation";
 import { routes } from "@/routes";
 import { DataFetchingProps } from "@/data/types";
+import Loading from "@/components/Loading";
 
 interface LeaderboardTableProps {
   teams?: LadderTeam[];
@@ -37,28 +41,41 @@ export const LeaderboardTable: React.FC<
       <TableBodyContainer>
         <Table>
           <tbody>
-            {loading && <TableRow>Loading...</TableRow>}
-            {error && <TableRow>Data Error!</TableRow>}
-            {teams?.map((team, index) => {
-              const teamMember = team.teamMembers[0];
-              return (
+            {loading && (
+              <TableRow>
+                <TableCell colSpan={5}>
+                  <Center>
+                    <Loading />
+                  </Center>
+                </TableCell>
+              </TableRow>
+            )}
+            {error && (
+              <TableRow>
+                <TableCell colSpan={5}>Error Loading Data!</TableCell>
+              </TableRow>
+            )}
+            {teams?.map((team, index) =>
+              team.teamMembers.map((teamMember) => (
                 <TableRow
                   onClick={() =>
                     teamMember && push(routes.PLAYER(teamMember.id))
                   }
                   key={index}
                 >
-                  <TableCell>{teamMember?.displayName || "N/A"}</TableCell>
+                  <TableCell>{teamMember.displayName || "N/A"}</TableCell>
                   <TableCell>{team.previousRank}</TableCell>
                   <TableCell>{team.mmr}</TableCell>
                   <TableCell>{team.wins}</TableCell>
                   <TableCell>{team.losses}</TableCell>
                 </TableRow>
-              );
-            })}
+              ))
+            )}
           </tbody>
         </Table>
       </TableBodyContainer>
     </>
   );
 };
+
+export default LeaderboardTable;
