@@ -7,6 +7,7 @@ export const MainHeader = styled(Center)`
   height: 100px;
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 2rem 0;
+    height: 120px;
   }
   width: 100%;
 `;
