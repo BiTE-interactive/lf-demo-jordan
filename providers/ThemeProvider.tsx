@@ -1,6 +1,3 @@
-// This provider serves as a means to provide the users selected theme
-// If no theme is selected the theme defaults to the user's system settings
-
 import React, {
   createContext,
   useContext,
@@ -10,6 +7,7 @@ import React, {
 } from "react";
 import _ from "lodash";
 import { shared, light, dark, Theme, CombinedTheme } from "../styles/theme";
+import Cookies from "js-cookie";
 
 interface ThemeContextType {
   theme: CombinedTheme;
@@ -37,14 +35,31 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
   // Listen for changes in the system theme preference
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
     const handleChange = (e: MediaQueryListEvent) => {
+      const _themeType = e.matches ? "dark" : "light";
+      // If a user changes their system theme preference save it in cookies as well
+      Cookies.set("theme", _themeType, { expires: 365 });
       setTheme(e.matches ? dark : light);
+      setThemeType(_themeType);
     };
 
-    setTheme(mediaQuery.matches ? dark : light);
-    setThemeType(mediaQuery.matches ? "dark" : "light");
+    const getInitialTheme = () => {
+      // Try to get theme from cookies
+      const savedTheme = Cookies.get("theme");
+      if (savedTheme) {
+        return savedTheme === "dark" ? dark : light;
+      }
+      // Fallback to system preference
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      return mediaQuery.matches ? dark : light;
+    };
+
+    const initialTheme = getInitialTheme();
+
+    setTheme(initialTheme);
+    setThemeType(initialTheme === dark ? "dark" : "light");
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     mediaQuery.addEventListener("change", handleChange);
 
@@ -54,10 +69,14 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   }, []);
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === light ? dark : light));
-    setThemeType((prevThemeType) =>
-      prevThemeType === "light" ? "dark" : "light"
-    );
+    setTheme((prevTheme) => {
+      const newTheme = prevTheme === light ? dark : light;
+      const newThemeType = prevTheme === light ? "dark" : "light";
+      // Save theme choice in cookies
+      Cookies.set("theme", newThemeType, { expires: 365 });
+      setThemeType(newThemeType);
+      return newTheme;
+    });
   };
 
   return (
@@ -68,8 +87,6 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     </ThemeContext.Provider>
   );
 };
-
-export default ThemeProvider;
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
