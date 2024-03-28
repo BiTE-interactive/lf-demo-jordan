@@ -5,6 +5,7 @@ interface IconButtonProps {
   content?: string;
   Icon: FC;
   onClick: () => void;
+  style?: React.CSSProperties;
 }
 
 const IconButton = ({

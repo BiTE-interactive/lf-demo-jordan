@@ -21,8 +21,12 @@
       "@/*": ["./*"],
       "@assets/*": ["./assets/*"],
       "@components/*": ["./components/*"],
+      "@data/*": ["./data/*"],
+      "@features/*": ["./features/*"],
+      "@hooks/*": ["./hooks/*"],
       "@lib/*": ["./lib/*"],
       "@providers/*": ["./providers/*"],
+      "@styled/*": ["./components/styled/*"],
       "@styles/*": ["./styles/*"]
     }
   },

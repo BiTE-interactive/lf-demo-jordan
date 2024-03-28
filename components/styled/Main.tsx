@@ -13,6 +13,6 @@ export const Main = styled(Col)`
     ${theme.backgroundEnd}
   `};
   justify-content: space-between;
-  padding: 6rem;
   min-height: 100vh;
+  height: 100%;
 `;

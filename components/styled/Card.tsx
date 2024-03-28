@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Card = styled.div`
   padding: 1rem 1.2rem;
+  display: flex;
   border-radius: var(--border-radius);
   background: rgba(var(--card-rgb), 0);
   border: 1px solid rgba(var(--card-border-rgb), 0);

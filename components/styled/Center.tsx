@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Row } from "./Row";
+import { Flex } from "./Flex";
 
-export const Center = styled(Row)`
+export const Center = styled(Flex)`
   justify-content: center;
   align-items: center;
 `;

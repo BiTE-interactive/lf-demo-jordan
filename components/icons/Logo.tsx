@@ -2,7 +2,7 @@ import React from "react";
 import { IconProps } from "./types";
 import { useTheme } from "@/providers";
 
-export const Logo = ({ height = 100, fill }: IconProps) => {
+export const Logo = ({ height = 50, fill }: IconProps) => {
   const { theme } = useTheme();
   return (
     <svg

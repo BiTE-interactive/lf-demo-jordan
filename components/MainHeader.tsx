@@ -1,18 +1,23 @@
 import React from "react";
 import { MainHeader } from "./styled/MainHeader";
-import { Title } from "./styled/Title";
 import { Center } from "./styled/Center";
 import { Logo } from "./icons/Logo";
 import ThemeToggle from "./ThemeToggle";
+import { Col, Flex } from "./styled";
+import { H2 } from "./styled/Headers/H2";
 
 export const MainHeaderContainer = () => {
   return (
     <MainHeader>
-      <Center>
-        <Title>Demo App For</Title>
-        <Logo />
-        <ThemeToggle />
-      </Center>
+      <ThemeToggle />
+      <Col>
+        <Flex gap="2rem">
+          <Logo />
+        </Flex>
+        <Center>
+          <H2>Demo App</H2>
+        </Center>
+      </Col>
     </MainHeader>
   );
 };

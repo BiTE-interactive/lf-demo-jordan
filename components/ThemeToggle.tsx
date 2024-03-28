@@ -10,9 +10,11 @@ const ThemeToggle = () => {
     <IconButton
       Icon={themeType === "light" ? Dark : Light}
       onClick={toggleTheme}
+      $margin="0"
       $size="md"
       $rounded
       $variant="switch"
+      style={{ position: "fixed", right: 15, top: 15 }}
     />
   );
 };

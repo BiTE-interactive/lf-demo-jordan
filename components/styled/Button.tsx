@@ -7,6 +7,7 @@ export interface ButtonProps {
   $rounded?: boolean;
   $size?: ButtonSize;
   $variant?: "primary" | "secondary" | "switch";
+  $margin?: string;
 }
 
 const buttonSize = (size?: ButtonSize) => {
@@ -26,6 +27,7 @@ export const Button = styled.button<ButtonProps>`
   padding: ${({ $rounded }) => ($rounded ? "0" : "10px 20px")};
   height: ${({ $size }) => buttonSize($size)};
   width: ${({ $size }) => buttonSize($size)};
+  margin: ${({ $margin }) => $margin || "0"};
   background-color: ${({ theme, $variant }) =>
     theme.button[$variant || "primary"].background};
   color: ${({ theme, $variant }) => theme.button[$variant || "primary"].color};

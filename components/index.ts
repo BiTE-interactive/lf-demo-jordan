@@ -1,2 +1,2 @@
-export * from "./Leaderboard";
 export * from "./MainHeader";
+export * from "./TeamCard";
