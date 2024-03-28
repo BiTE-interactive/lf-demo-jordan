@@ -1,17 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Livefront Demo React Project
+
+This project is built using Next.js, incorporating styled-components for styling with support for custom dark and light themes. It includes global styles to maintain a consistent look and feel across the application. For testing, we utilize Jest to ensure our components and utilities function as expected. The function of the app is to provide a list of the top Startcraft 2 Grandmaster players for each region as well as a detailed profile page.
 
 ## Getting Started
+To get the project up and running on your local machine, follow these instructions.
 
-First, run the development server:
+## Prerequisites
+- Node.js >= 21 (LTS version recommended)
+- npm
+- .env file with client token and secret. Please contact either Jordan or Joe for a copy if you don't have one
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Installation
+- Clone the repository
+```git clone git@github.com:BiTE-interactive/lf-demo-jordan.git```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Install deps
+```npm install```
+
+- Run the development server:
+```npm run dev```
+
+- Open http://localhost:3000 with your browser to see the result.
+
+## Styling with Styled-Components
+This project uses styled-components for all CSS styling, allowing for theme-based designs and the ability to leverage props for dynamic styling.
+
+## Themes
+The application supports both a dark and a light theme, switchable via UI controls and persisting between sessions.
+
+## Global Styles
+Global styles are defined in globalStyles.tsx and are applied at the application level to ensure consistency across all pages and components.
+
+## Testing with Jest
+Jest is set up for testing React components and custom utilities. To run tests:
+
+```npm test```
+
+This will execute all tests and output the results, ensuring that components render correctly and functionalities meet expectations.
