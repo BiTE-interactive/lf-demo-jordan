@@ -32,8 +32,12 @@ The application supports both a dark and a light theme, switchable via UI contro
 Global styles are defined in globalStyles.tsx and are applied at the application level to ensure consistency across all pages and components.
 
 ## Testing with Jest
-Jest is set up for testing React components and custom utilities. To run tests:
+Jest is set up for testing React components and custom utilities.
 
+To run all tests:
 ```npm test```
+
+To watch test files for changes:
+```npm test:watch```
 
 This will execute all tests and output the results, ensuring that components render correctly and functionalities meet expectations.
