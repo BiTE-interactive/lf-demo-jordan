@@ -22,11 +22,11 @@ To get the project up and running on your local machine, follow these instructio
 
 - Open http://localhost:3000 with your browser to see the result.
 
-## Styling with Styled-Components
-This project uses styled-components for all CSS styling, allowing for theme-based designs and the ability to leverage props for dynamic styling.
+## Server-Side Rendering (SSR) with Styled-Components
+This project uses styled-components for all CSS styling, allowing for theme-based designs and the ability to leverage props for dynamic styling. Styled-components has been with Next.js's server-side rendering (SSR) framework to performance and SEO considerations. It also ensures against Flash of Unstyled Content (FOUC).
 
 ## Themes
-The application supports both a dark and a light theme, switchable via UI controls and persisting between sessions.
+The application supports both a dark and a light theme, switchable via UI controls and persisting between sessions. Given the initial render is done server-side the theme defaults to the light theme.
 
 ## Global Styles
 Global styles are defined in globalStyles.tsx and are applied at the application level to ensure consistency across all pages and components.
