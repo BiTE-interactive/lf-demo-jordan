@@ -23,6 +23,12 @@ export const LeaderboardTable: React.FC<
   LeaderboardTableProps & DataFetchingProps
 > = ({ error, loading, teams }) => {
   const { push } = useRouter();
+
+  const handleRowClick = (id?: string) => {
+    if (!id) return;
+    push(routes.PLAYER(id));
+  };
+
   return (
     <>
       <TableHeaderContainer>
@@ -58,9 +64,7 @@ export const LeaderboardTable: React.FC<
             {teams?.map((team, index) =>
               team.teamMembers.map((teamMember) => (
                 <TableRow
-                  onClick={() =>
-                    teamMember && push(routes.PLAYER(teamMember.id))
-                  }
+                  onClick={() => handleRowClick(teamMember.id)}
                   key={index}
                 >
                   <TableCell>{teamMember.displayName || "N/A"}</TableCell>

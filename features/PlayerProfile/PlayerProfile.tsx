@@ -17,7 +17,7 @@ export const PlayerProfile = ({ playerData }: { playerData: PlayerData }) => {
     <Container>
       <BackButton
         style={{ position: "absolute", left: 10 }}
-        onClick={() => push(routes.HOME)}
+        onClick={() => push(routes.HOME())}
       />
       <ThemeToggle />
       <Portrait

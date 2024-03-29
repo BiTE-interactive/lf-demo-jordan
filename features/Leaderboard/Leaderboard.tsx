@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { useSWRConfig } from "swr";
 import { Center, Col, Container, Flex } from "@styled/index";
@@ -5,13 +7,15 @@ import Select from "@components/Select/Select";
 import { H2 } from "@components/styled/Headers/H2";
 import { LadderData, Region, useGetGmLadderClient } from "@data/ladder";
 import LeaderboardTable from "@features/Leaderboard/LeaderboardTable";
+import { getRegion } from "@/routes";
 
 export interface LadderDataProps {
   data: LadderData;
 }
 
 export const Leaderboard = () => {
-  const [region, setRegion] = useState(Region.US);
+  const regionFromQuery = getRegion();
+  const [region, setRegion] = useState(regionFromQuery || Region.US);
   const { mutate } = useSWRConfig();
 
   useEffect(() => {
@@ -19,6 +23,16 @@ export const Leaderboard = () => {
   }, [mutate, region]);
 
   const { error, isLoading, data } = useGetGmLadderClient(region);
+
+  const handleRegionChange = (e: any) => {
+    const region = e.target.value as Region;
+    setRegion(region);
+    window.history.pushState(
+      {},
+      "",
+      window.location.href.split("?")[0] + `?region=${region}`
+    );
+  };
 
   const regionOptions = [
     { value: Region.US, label: "US" },
@@ -34,7 +48,7 @@ export const Leaderboard = () => {
             <Flex $align="center" $justify="space-between" $p={4} $flex={1}>
               <H2>GM Leaderboard</H2>
               <Select
-                onChange={(e) => setRegion(e.target.value as Region)}
+                onChange={handleRegionChange}
                 options={regionOptions}
                 value={region}
               />
