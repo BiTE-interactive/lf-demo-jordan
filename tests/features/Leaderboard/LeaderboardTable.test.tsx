@@ -16,7 +16,7 @@ describe("LeaderboardTable", () => {
         <LeaderboardTable loading={true} error={undefined} />
       </MockThemeWrapper>
     );
-    expect(screen.getByText(/loading.../i)).toBeInTheDocument();
+    expect(screen.getByTestId(/loading/i)).toBeInTheDocument();
   });
 
   it("displays an error state", () => {

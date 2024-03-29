@@ -2,7 +2,7 @@ import { Loading as StyledLoading } from "@styled/Loading";
 
 export const Loading = () => {
   return (
-    <StyledLoading>
+    <StyledLoading data-testid="loading">
       <div></div>
       <div></div>
       <div></div>

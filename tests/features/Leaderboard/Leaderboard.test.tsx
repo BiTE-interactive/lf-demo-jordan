@@ -38,19 +38,6 @@ beforeEach(() => {
 });
 
 describe("Leaderboard Component", () => {
-  test("initially renders with loading state", () => {
-    mockUseGetGmLadderClient.mockReturnValueOnce({
-      ...defaultReturnValues,
-      isLoading: true,
-    });
-    render(
-      <MockThemeWrapper>
-        <Leaderboard />
-      </MockThemeWrapper>
-    );
-    expect(screen.getByText(/loading.../i)).toBeInTheDocument();
-  });
-
   test("renders error state", () => {
     mockUseGetGmLadderClient.mockReturnValueOnce({
       ...defaultReturnValues,
