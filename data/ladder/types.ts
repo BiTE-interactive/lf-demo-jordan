@@ -1,14 +1,19 @@
-export interface LadderTeam {
-  teamMembers: TeamMember[];
+export enum Region {
+  US = "1",
+  EU = "2",
+  KR = "3",
+}
+
+export interface LadderMember {
+  character: Character;
   previousRank: number;
   points: number;
   wins: number;
   losses: number;
-  mmr: number;
   joinTimestamp: number;
 }
 
-export interface TeamMember {
+export interface Character {
   id: string;
   realm: number;
   region: number;
@@ -18,11 +23,5 @@ export interface TeamMember {
 }
 
 export interface LadderData {
-  ladderTeams: LadderTeam[];
-}
-
-export enum Region {
-  US = "1",
-  EU = "2",
-  KR = "3",
+  ladderMembers: LadderMember[];
 }

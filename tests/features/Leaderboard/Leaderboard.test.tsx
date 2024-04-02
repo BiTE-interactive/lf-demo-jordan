@@ -1,5 +1,5 @@
 jest.mock("@data/ladder", () => ({
-  useGetGmLadderClient: jest.fn(),
+  usegetLadderClient: jest.fn(),
   Region: { US: "us", EU: "eu", KR: "kr" },
 }));
 jest.mock("swr", () => ({
@@ -11,14 +11,14 @@ jest.mock("@features/Leaderboard", () => () => <table />);
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Leaderboard from "@features/Leaderboard/Leaderboard";
-import { useGetGmLadderClient } from "@/data/ladder";
+import { usegetLadderClient } from "@/data/ladder";
 import { useSWRConfig } from "swr";
 import MockThemeWrapper from "@/tests/components/MockThemeWrapper";
 import { mockLadderData } from "@/__mocks__";
 
 // Correct the typing for the mocked function
-const mockUseGetGmLadderClient = useGetGmLadderClient as jest.MockedFunction<
-  typeof useGetGmLadderClient
+const mockUsegetLadderClient = usegetLadderClient as jest.MockedFunction<
+  typeof usegetLadderClient
 >;
 
 const defaultReturnValues = {
@@ -31,7 +31,7 @@ const defaultReturnValues = {
 
 beforeEach(() => {
   jest.clearAllMocks();
-  mockUseGetGmLadderClient.mockReturnValue({
+  mockUsegetLadderClient.mockReturnValue({
     ...defaultReturnValues,
     data: mockLadderData,
   });
@@ -39,7 +39,7 @@ beforeEach(() => {
 
 describe("Leaderboard Component", () => {
   test("renders error state", () => {
-    mockUseGetGmLadderClient.mockReturnValueOnce({
+    mockUsegetLadderClient.mockReturnValueOnce({
       ...defaultReturnValues,
       error: new Error("Error fetching data"),
     });
@@ -61,6 +61,6 @@ describe("Leaderboard Component", () => {
     fireEvent.change(screen.getByRole("regionSelect"), {
       target: { value: "eu" },
     });
-    expect(mutate).toHaveBeenCalledWith(`/api/gm-ladder?region=eu`);
+    expect(mutate).toHaveBeenCalledWith(`/api/ladder?region=eu`);
   });
 });

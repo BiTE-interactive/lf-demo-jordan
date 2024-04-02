@@ -34,13 +34,13 @@ describe("LeaderboardTable", () => {
         <LeaderboardTable
           loading={false}
           error={undefined}
-          teams={mockLadderData.ladderTeams}
+          members={mockLadderData.ladderMembers}
         />
       </MockThemeWrapper>
     );
     expect(screen.getByText("Player A")).toBeInTheDocument();
     expect(screen.getByText(/1/)).toBeInTheDocument(); // Previous Rank
-    expect(screen.getByText(/7000/)).toBeInTheDocument(); // MMR
+    expect(screen.getByText(/5/)).toBeInTheDocument(); // Points
     expect(screen.getByText(/2/)).toBeInTheDocument(); // Wins
     expect(screen.getByText(/3/)).toBeInTheDocument(); // Losses
   });
@@ -51,7 +51,7 @@ describe("LeaderboardTable", () => {
         <LeaderboardTable
           loading={false}
           error={undefined}
-          teams={mockLadderData.ladderTeams}
+          members={mockLadderData.ladderMembers}
         />
       </MockThemeWrapper>
     );

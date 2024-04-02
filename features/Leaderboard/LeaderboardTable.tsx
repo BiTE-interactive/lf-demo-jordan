@@ -1,6 +1,6 @@
 "use client";
 
-import { LadderTeam } from "@data/ladder";
+import { LadderMember } from "@data/ladder";
 import {
   Table,
   TableHeader,
@@ -16,12 +16,12 @@ import { DataFetchingProps } from "@/data/types";
 import Loading from "@/components/Loading";
 
 interface LeaderboardTableProps {
-  teams?: LadderTeam[];
+  members?: LadderMember[];
 }
 
 export const LeaderboardTable: React.FC<
   LeaderboardTableProps & DataFetchingProps
-> = ({ error, loading, teams }) => {
+> = ({ error, loading, members }) => {
   const { push } = useRouter();
 
   const handleRowClick = (id?: string) => {
@@ -37,7 +37,7 @@ export const LeaderboardTable: React.FC<
             <tr>
               <TableHeader>Name</TableHeader>
               <TableHeader>Prev Rank</TableHeader>
-              <TableHeader>MMR</TableHeader>
+              <TableHeader>Points</TableHeader>
               <TableHeader>Wins</TableHeader>
               <TableHeader>Losses</TableHeader>
             </tr>
@@ -61,20 +61,18 @@ export const LeaderboardTable: React.FC<
                 <TableCell colSpan={5}>Error Loading Data!</TableCell>
               </TableRow>
             )}
-            {teams?.map((team, index) =>
-              team.teamMembers.map((teamMember) => (
-                <TableRow
-                  onClick={() => handleRowClick(teamMember.id)}
-                  key={index}
-                >
-                  <TableCell>{teamMember.displayName || "N/A"}</TableCell>
-                  <TableCell>{team.previousRank}</TableCell>
-                  <TableCell>{team.mmr}</TableCell>
-                  <TableCell>{team.wins}</TableCell>
-                  <TableCell>{team.losses}</TableCell>
-                </TableRow>
-              ))
-            )}
+            {members?.map((member, index) => (
+              <TableRow
+                onClick={() => handleRowClick(member.character.id)}
+                key={index}
+              >
+                <TableCell>{member.character.displayName || "N/A"}</TableCell>
+                <TableCell>{member.previousRank}</TableCell>
+                <TableCell>{member.points}</TableCell>
+                <TableCell>{member.wins}</TableCell>
+                <TableCell>{member.losses}</TableCell>
+              </TableRow>
+            ))}
           </tbody>
         </Table>
       </TableBodyContainer>

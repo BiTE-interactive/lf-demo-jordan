@@ -1,7 +1,7 @@
-import { LadderTeam } from "@/data/ladder";
+import { LadderMember } from "@/data/ladder";
 import React from "react";
 
-export const TeamCard = ({ team }: { team: LadderTeam }) => {
+export const TeamCard = ({ team }: { team: LadderMember }) => {
   return (
     <div>
       <h2>

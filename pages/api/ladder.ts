@@ -1,4 +1,4 @@
-import { LadderData, Region, getGmLadderServer } from "@data/ladder";
+import { LadderData, Region, getLadderServer } from "@data/ladder";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -8,7 +8,7 @@ export default async function handler(
   const { region } = req.query;
 
   try {
-    const data = await getGmLadderServer(region as Region);
+    const data = await getLadderServer(region as Region);
 
     res.status(200).json(data);
   } catch (error) {

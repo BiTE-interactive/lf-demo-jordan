@@ -5,7 +5,7 @@ import { useSWRConfig } from "swr";
 import { Center, Col, Container, Flex } from "@styled/index";
 import Select from "@components/Select/Select";
 import { H2 } from "@components/styled/Headers/H2";
-import { LadderData, Region, useGetGmLadderClient } from "@data/ladder";
+import { LadderData, Region, usegetLadderClient } from "@data/ladder";
 import LeaderboardTable from "@features/Leaderboard/LeaderboardTable";
 import { getRegion } from "@/routes";
 
@@ -19,10 +19,10 @@ export const Leaderboard = () => {
   const { mutate } = useSWRConfig();
 
   useEffect(() => {
-    mutate(`/api/gm-ladder?region=${region}`);
+    mutate(`/api/ladder?region=${region}`);
   }, [mutate, region]);
 
-  const { error, isLoading, data } = useGetGmLadderClient(region);
+  const { error, isLoading, data } = usegetLadderClient(region);
 
   const handleRegionChange = (e: any) => {
     const region = e.target.value as Region;
@@ -57,7 +57,7 @@ export const Leaderboard = () => {
               <LeaderboardTable
                 loading={isLoading}
                 error={error}
-                teams={data?.ladderTeams}
+                members={data?.ladderMembers}
               />
             </Col>
           </Col>
