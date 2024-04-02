@@ -6,10 +6,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<PlayerData | { error: string }>
 ) {
-  const { id } = req.query;
+  const { id, regionId } = req.query;
 
   try {
-    const data = await getPlayerServer(id as string);
+    const data = await getPlayerServer(id as string, regionId as string);
 
     res.status(200).json(data);
   } catch (error) {

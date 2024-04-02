@@ -46,7 +46,7 @@ export const Leaderboard = () => {
         <Container>
           <Col>
             <Flex $align="center" $justify="space-between" $p={4} $flex={1}>
-              <H2>GM Leaderboard</H2>
+              <H2>SC2 Ladder Data</H2>
               <Select
                 onChange={handleRegionChange}
                 options={regionOptions}
